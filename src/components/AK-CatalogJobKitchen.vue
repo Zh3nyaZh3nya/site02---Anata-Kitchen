@@ -33,10 +33,9 @@
     import VSelect from '@/components/UI/AK-Select.vue'
     import VButton from '@/components/UI/AK-Button.vue';
     import VPagination from '@/components/UI/AK-Pagination.vue';
-    import VItemPage from '@/components/AK-PageItem.vue';
     export default {
         components: {
-            VCatalogJobItem, VSelect, VButton, VPagination, VItemPage
+            VCatalogJobItem, VSelect, VButton, VPagination
         },
         data() {
             return {
