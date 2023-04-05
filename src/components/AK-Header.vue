@@ -1,12 +1,12 @@
 <template >
     <div class="header">
         <v-popup
-            v-if="visiblePopup"
             v-for="popupItem in popupItems"
             :key="popupItem.id"
             :VPopup_data="popupItem"
-            @toClosePopup="closePopup"
-            @toClosePopupBtn="closePopupBtn"
+            v-show="popupItem.visiblePopup"
+            @toClosePopup="closePopup(popupItem)"
+            @toClosePopupBtn="closePopupBtn(popupItem)"
         >
         
         </v-popup>
@@ -95,7 +95,6 @@
 
         </div>
 
-
         <div class="header__top">
             <div class="header__top__logo">
 
@@ -156,7 +155,7 @@
             <div class="header__bot__button">
 
                 <div class="header__bot__button__project ">
-                    <button class='btnStyle' @click="showPopup">
+                    <button class='btnStyle' @click="showPopup(popupItems[0])">
                         
                         <img src="@/assets/headerImg/box.svg" alt="">
                         <span>Проект + Расчет</span>
@@ -166,7 +165,7 @@
                     </div>
                 </div>
                 <div class="header__bot__button__zamer">
-                    <button class="btnStyle" @click="showPopup">
+                    <button class="btnStyle" @click="showPopup(popupItems[1])">
                         <img src="@/assets/headerImg/line.svg" alt="">
                         <img src="@/assets/headerImg/arrow.svg" alt="">
                         <span>Вызвать замерщика с образцами</span>
@@ -182,7 +181,6 @@
 import VPopup from './UI/AK-Popup.vue';
 
 export default {
-    
     name: 'VHeader',
     components: {
         VPopup
@@ -205,7 +203,7 @@ export default {
                 }
             ],
             visiblePopup: false,
-            showBurger: false,
+                showBurger: false,
             activeLink: false
         }
     },
@@ -213,14 +211,15 @@ export default {
         addLike() {
             this.likes += 1;
         },
-        showPopup() {
-            this.visiblePopup = true
+        showPopup(popupItem) {
+            popupItem.visiblePopup = true
         },
-        closePopup() {
-            this.visiblePopup = false
+        closePopup(popupItem) {
+            popupItem.visiblePopup = false
         },
-        closePopupBtn() {
-             this.visiblePopup = false
+        closePopupBtn(popupItem) {
+            popupItem.visiblePopup = false
+
         }
     },
 }
@@ -329,6 +328,7 @@ export default {
     .header__bot__list--link {
         display: flex;
         column-gap: 40px;
+        text-align: center;
     }
 
     .header__bot__list--link a:hover {

@@ -79,7 +79,6 @@
                     this.name = '',
                     this.phone = ''
                     this.$emit('toClosePopupBtn')
-
                 }
                 event.preventDefault()
             },
