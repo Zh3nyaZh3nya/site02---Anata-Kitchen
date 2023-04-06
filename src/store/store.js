@@ -4,6 +4,6 @@ import cart from './modules/cart'
 
 export default new createStore({
     modules: {
-        cart
+        cart // корзина
     }
 })

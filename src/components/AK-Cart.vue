@@ -32,10 +32,10 @@ import { mapActions } from 'vuex';
         },
         methods: {
             ...mapActions([
-                'DELETE_FROM_CART'
+                'DELETE_FROM_CART' // функция удаляющая содержимое
             ]),
             deleteItemCart(index) {
-                this.DELETE_FROM_CART(index)
+                this.DELETE_FROM_CART(index) // определяет по индексу какую карточку удалить
             }
         }
     }

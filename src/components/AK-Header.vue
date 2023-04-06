@@ -199,7 +199,6 @@ export default {
     },
     data() {
         return {
-            likes: 3,
             popupItems: [
                 {
                     id: 1,

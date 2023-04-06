@@ -238,13 +238,13 @@
                 this.$router.push( {name: 'KitchenName',query: { 'kitchen': article } } )
             },
             addToCart(data) {
-                this.ADD_TO_CART(data)
+                this.ADD_TO_CART(data) // добавление карточек в корзину
             }
         },
         watch: {
             selectedSort(newValue) {
                 this.kitchenItem.sort((card1, card2) => {
-                    return card1[this.selectedSort]?.localeCompare(card2[this.selectedSort])
+                    return card1[this.selectedSort]?.localeCompare(card2[this.selectedSort]) // сортировка карточек
                 })
             }
         }

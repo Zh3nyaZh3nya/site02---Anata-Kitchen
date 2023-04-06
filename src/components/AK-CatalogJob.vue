@@ -77,7 +77,7 @@
         },
         methods: {
             ...mapActions([
-                'ADD_TO_CART'
+                'ADD_TO_CART' // функция добавления карточки
             ]),
             goToTheCatalogPage() {
                 this.$router.push('/KitchenName')
@@ -86,7 +86,7 @@
                 this.$router.push( {name: 'KitchenName',query: { 'kitchen': article } } )
             },
             addToCart(data) {
-                this.ADD_TO_CART(data)
+                this.ADD_TO_CART(data) // само добавление карточки
             }
         }
     }
