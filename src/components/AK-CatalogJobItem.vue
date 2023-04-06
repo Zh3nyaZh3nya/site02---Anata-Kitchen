@@ -35,7 +35,7 @@
                     <span>Видеоотзыв</span>
                 </button>
 
-                <button class="job__item__slider__body__img__btn-like">
+                <button class="job__item__slider__body__img__btn-like" @click="addToCart">
                     <img :src="require('@/assets/mainImg/sliderCatalog/' + catalogSliderItem_data.heart)" alt="">
                 </button>
 
@@ -109,6 +109,9 @@
             },
             itemClick() {
                 this.$emit('itemClick', this.catalogSliderItem_data.article)
+            },
+            addToCart() {
+                this.$emit('addToCart',this.catalogSliderItem_data)
             }
         },
 
@@ -117,6 +120,7 @@
 </script>
 
 <style>
+
 .job__item__slider {  
     max-width: 650px;
     width: 100%;

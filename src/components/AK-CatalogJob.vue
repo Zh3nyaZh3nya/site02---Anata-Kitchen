@@ -10,7 +10,7 @@
                 :key="catalogSliderItem.article"
                 :catalogSliderItem_data="catalogSliderItem"
                 @itemClick="itemClick"
-
+                @addToCart="addToCart"
             />
 
         </div>
@@ -23,6 +23,7 @@
 <script>
     import VCatalogJobItem from '@/components/AK-CatalogJobItem.vue';
     import VButton from '@/components/UI/AK-Button.vue';
+    import { mapActions } from 'vuex';
     
     export default {
         components: {
@@ -75,11 +76,17 @@
             }
         },
         methods: {
+            ...mapActions([
+                'ADD_TO_CART'
+            ]),
             goToTheCatalogPage() {
                 this.$router.push('/KitchenName')
             },
             itemClick(article) {
                 this.$router.push( {name: 'KitchenName',query: { 'kitchen': article } } )
+            },
+            addToCart(data) {
+                this.ADD_TO_CART(data)
             }
         }
     }

@@ -18,6 +18,7 @@
                     :key="KitchenItem.article"
                     :catalogSliderItem_data="KitchenItem"
                     @itemClick="itemClick"
+                    @addToCart="addToCart"
 
                 />
             </transition-group>
@@ -33,6 +34,7 @@
     import VSelect from '@/components/UI/AK-Select.vue'
     import VButton from '@/components/UI/AK-Button.vue';
     import VPagination from '@/components/UI/AK-Pagination.vue';
+    import { mapActions } from 'vuex';
     export default {
         components: {
             VCatalogJobItem, VSelect, VButton, VPagination
@@ -229,8 +231,14 @@
 
         },
         methods: {
+            ...mapActions([
+                'ADD_TO_CART'
+            ]),
             itemClick(article) {
                 this.$router.push( {name: 'KitchenName',query: { 'kitchen': article } } )
+            },
+            addToCart(data) {
+                this.ADD_TO_CART(data)
             }
         },
         watch: {

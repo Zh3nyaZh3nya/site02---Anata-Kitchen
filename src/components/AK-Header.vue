@@ -39,14 +39,19 @@
                 </div>
 
                 <div class="header__burger__top__info__counter">
-                    <button @click="addLike">    
+                    <button @click="showCart">
                         <div class="header__burger__top__info__counter-like">
                             <img src="@/assets/headerImg/Like.svg" alt="">
                         </div>
                         <div class="header__burger__info__counter-number">
-                            <span>{{likes}}</span>
+                            <span>{{ CART.length }}</span>
                         </div>
+
                     </button>
+                    <akCart
+                        v-show="showCartMenu"
+                        :cart_data="CART"
+                    />
                 </div>
 
                 <div class="burger__menu">
@@ -73,7 +78,7 @@
 
             <div class="btn-burger">
                 <div class="header__burger__bot__button__project ">
-                    <button class='btnStyle burger' @click="showPopup">
+                    <button class='btnStyle burger' @click="showPopup(popupItems[0])">
 
                         <img src="@/assets/headerImg/box.svg" alt="">
                         <span>Проект + Расчет</span>
@@ -84,7 +89,7 @@
                 </div>
 
                 <div class="header__burger__bot__button__zamer">
-                    <button class="btnStyle burger" @click="showPopup">
+                    <button class="btnStyle burger" @click="showPopup(popupItems[1])">
                         <img src="@/assets/headerImg/line.svg" alt="">
                         <img src="@/assets/headerImg/arrow.svg" alt="">
                         <span>Вызвать</span><span>замерщика с образцами</span>
@@ -125,14 +130,20 @@
                 </div>
 
                 <div class="header__top__info__counter">
-                    <button @click="addLike">    
+                    <button @click="showCart">
                         <div class="header__top__info__counter-like">
                             <img src="@/assets/headerImg/Like.svg" alt="">
                         </div>
                         <div class="header__top__info__counter-number">
-                            <span>{{likes}}</span>
+                            <span>{{ CART.length }}</span>
                         </div>
+
                     </button>
+                    <akCart
+                        v-show="showCartMenu"
+                        :cart_data="CART"
+                    />
+
                 </div>
         
             </div>
@@ -179,11 +190,12 @@
 
 <script>
 import VPopup from './UI/AK-Popup.vue';
-
+import akCart from './AK-Cart.vue'; 
+import { mapGetters } from 'vuex';
 export default {
     name: 'VHeader',
     components: {
-        VPopup
+        VPopup, akCart
     },
     data() {
         return {
@@ -203,13 +215,18 @@ export default {
                 }
             ],
             visiblePopup: false,
-                showBurger: false,
-            activeLink: false
+            showBurger: false,
+            activeLink: false,
+            showCartMenu: false,
         }
     },
     methods: {
-        addLike() {
-            this.likes += 1;
+        showCart() {
+            if(this.showCartMenu === false) {
+                this.showCartMenu = true
+            }else {
+                this.showCartMenu = false
+            }
         },
         showPopup(popupItem) {
             popupItem.visiblePopup = true
@@ -222,10 +239,16 @@ export default {
 
         }
     },
+    computed: {
+        ...mapGetters([
+            'CART'
+        ])
+    }
 }
 </script>
 
 <style scoped>
+
     .header {
         font-size: 16px;
         max-width: 1360px;
@@ -244,6 +267,7 @@ export default {
         justify-content: space-between;
         text-align: center;
         margin: 29px 0;
+        position: relative;
     }
 
     .header__top__logo {
