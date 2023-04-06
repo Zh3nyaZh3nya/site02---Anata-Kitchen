@@ -1,4 +1,4 @@
-vue 3
+vue 3 + vuex Store.
 
 ==== Anata Kitchen ====
 
