@@ -23,57 +23,11 @@
 <script>
     import VCatalogJobItem from '@/components/AK-CatalogJobItem.vue';
     import VButton from '@/components/UI/AK-Button.vue';
-    import { mapActions } from 'vuex';
+    import { mapActions, mapState } from 'vuex';
     
     export default {
         components: {
             VCatalogJobItem, VButton
-        },
-        data() {
-            return {
-                catalogJobItem: [
-                    {
-                        article: 1,
-                        Images: {
-                            img: '1.png', img2: '2.png', img3: '3.png', img4: '4.png',
-                        },
-                        youtube: 'youtube.svg', user: 'user.svg', heart: 'heart.svg', message: '* Фото от сборщика',
-                        title: 'Кухня Teramo',
-                        subtitle: 'Массив дуба', subtitle2: 'Фрезеровка', subtitle3: '7,2 м.п.',
-                        price: '125 000 ₽', discount: '147 000 ₽'
-                    }, 
-                    {
-                        article: 2,
-                        Images: {
-                            img: '2.png', img2: '1.png', img3: '3.png', img4: '4.png',
-                        },
-                        youtube: 'youtube.svg', user: 'user.svg', heart: 'heart.svg', message: '* Фото от клиента',
-                        title: 'Кухня Integrato',
-                        subtitle: 'Cleaf + Эмаль', subtitle2: 'Система без ручек', subtitle3: '4,2 м.п.',
-                        price: '180 000 ₽', discount: '220 000 ₽'
-                    },                    
-                    {
-                        article: 3,
-                        Images: {
-                            img: '3.png', img2: '4.png', img3: '2.png', img4: '1.png',
-                        },
-                        youtube: 'youtube.svg', user: 'user.svg', heart: 'heart.svg', message: '* Фото от сборщика',
-                        title: 'Кухня Integrato',
-                        subtitle: 'Массив дуба', subtitle2: 'Система без ручек', subtitle3: '7,2 м.п.',
-                        price: '270 000 ₽', discount: '357 000 ₽'
-                    },
-                    {
-                        article: 4,
-                        Images: {
-                            img: '4.png', img2: '3.png', img3: '4.png', img4: '2.png',
-                        },
-                        youtube: 'youtube.svg', user: 'user.svg', heart: 'heart.svg', message: '* Фото от сборщика',
-                        title: 'Кухня Integrato',
-                        subtitle: 'Массив дуба', subtitle2: 'Система без ручек', subtitle3: '7,2 м.п.',
-                        price: '230 000 ₽', discount: '280 000 ₽'
-                    }
-                ]
-            }
         },
         methods: {
             ...mapActions([
@@ -88,7 +42,11 @@
             addToCart(data) {
                 this.ADD_TO_CART(data) // само добавление карточки
             }
+        },
+        computed: {
+            ...mapState('kitchenItem', ['catalogJobItem'])
         }
+
     }
 </script>
 
