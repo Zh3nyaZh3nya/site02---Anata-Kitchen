@@ -226,7 +226,9 @@
 .nav-title {
     display: flex;
     column-gap: 15px;
+    cursor: pointer;
 }
+
 
 @media(max-width: 1024px) {
     .footer__nav {
