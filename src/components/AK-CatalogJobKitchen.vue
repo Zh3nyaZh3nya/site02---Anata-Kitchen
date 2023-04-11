@@ -1,5 +1,11 @@
 <template>
     <section class="catalog__kitchen">
+
+        <AKAlert 
+            :messages="messages"
+            :timeout="3000"
+        />
+
         <div class="catalog__kitchen-title">
             <span>Наши кухни</span>
         </div>
@@ -29,6 +35,7 @@
 </template>
 
 <script>
+    import AKAlert from './UI/AK-Alert.vue';
     import VCatalogJobItem from '@/components/AK-CatalogJobItem.vue';
     import VSelect from '@/components/UI/AK-Select.vue'
     import VButton from '@/components/UI/AK-Button.vue';
@@ -36,7 +43,7 @@
     import { mapActions, mapState } from 'vuex';
     export default {
         components: {
-            VCatalogJobItem, VSelect, VButton, VPagination
+            VCatalogJobItem, VSelect, VButton, VPagination, AKAlert
         },
         data() {
             return {
@@ -79,7 +86,7 @@
                     
                 ],
                 selectedSort: '',
-
+                messages: []
             }
 
         },
@@ -92,6 +99,9 @@
             },
             addToCart(data) {
                 this.ADD_TO_CART(data) // добавление карточек в корзину
+                .then(() => {
+                    this.messages.unshift( {name: 'Кухня добавлена', icon:' check', id: Date.now().toLocaleString}  ) // 
+                })
             }
         },
         computed: {
