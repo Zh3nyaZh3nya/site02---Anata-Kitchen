@@ -1,5 +1,11 @@
 <template>
     <section class="main__catalog">
+
+        <AKAlert
+            :messages="messages"
+            :timeout="3000"
+        />
+
         <div class="main__catalog__sliders-title">
                 <span>Живые фотографии наших работ от реальных клиентов 🥰</span>
         </div>
@@ -23,11 +29,17 @@
 <script>
     import VCatalogJobItem from '@/components/AK-CatalogJobItem.vue';
     import VButton from '@/components/UI/AK-Button.vue';
+    import AKAlert from './UI/AK-Alert.vue';
     import { mapActions, mapState } from 'vuex';
     
     export default {
         components: {
-            VCatalogJobItem, VButton
+            VCatalogJobItem, VButton, AKAlert
+        },
+        data() {
+            return {
+                messages: []
+            }
         },
         methods: {
             ...mapActions([
@@ -41,6 +53,9 @@
             },
             addToCart(data) {
                 this.ADD_TO_CART(data) // само добавление карточки
+                .then(() => {
+                    this.messages.unshift( {name: 'Кухня добавлена', icon:' check', id: Date.now().toLocaleString}  ) // 
+                })
             }
         },
         computed: {
