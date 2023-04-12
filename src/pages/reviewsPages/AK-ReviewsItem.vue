@@ -27,6 +27,7 @@
 <script>
     export default {
         name: 'v-review-item',
+        
         props: {
             reviewItem_data: {
                 type: Object,

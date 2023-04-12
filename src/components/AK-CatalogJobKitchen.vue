@@ -39,11 +39,11 @@
     import VCatalogJobItem from '@/components/AK-CatalogJobItem.vue';
     import VSelect from '@/components/UI/AK-Select.vue'
     import VButton from '@/components/UI/AK-Button.vue';
-    import VPagination from '@/components/UI/AK-Pagination.vue';
     import { mapActions, mapState } from 'vuex';
+    
     export default {
         components: {
-            VCatalogJobItem, VSelect, VButton, VPagination, AKAlert
+            VCatalogJobItem, VSelect, VButton, AKAlert
         },
         data() {
             return {
@@ -88,8 +88,8 @@
                 selectedSort: '',
                 messages: []
             }
-
         },
+
         methods: {
             ...mapActions([
                 'ADD_TO_CART'

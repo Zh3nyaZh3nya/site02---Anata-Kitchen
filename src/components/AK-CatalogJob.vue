@@ -41,6 +41,7 @@
                 messages: []
             }
         },
+        
         methods: {
             ...mapActions([
                 'ADD_TO_CART' // функция добавления карточки

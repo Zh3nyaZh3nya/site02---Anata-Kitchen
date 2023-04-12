@@ -8,6 +8,7 @@
 <script>
     export default {
         name: 'v-select',
+        
         props: {
             selectItems: {
                 type: Object,
@@ -17,11 +18,6 @@
                 type: String,
             }
 
-        },
-        data() {
-            return {
-                
-            }
         },
         methods: {
             changeOptions(event) {

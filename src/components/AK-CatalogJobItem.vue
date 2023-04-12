@@ -76,9 +76,8 @@
     import VButton from '@/components/UI/AK-Button.vue'
 
     export default {
-        components: {
-            VButton
-        },
+        components: {   VButton   },
+        
         props: {
             catalogSliderItem_data: {
                 type: Object,

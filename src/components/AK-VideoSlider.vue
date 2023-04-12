@@ -25,54 +25,56 @@
 </template>
 
 <script>
-import VVideoSliderItem from './AK-VideoSliderItem'
-import VButton from '@/components/UI/AK-Button.vue'
-export default {
-    name: 'VVideoSlider',
-    components: {
-        VVideoSliderItem, VButton
-    },
-    data() {
-        return {
-            videoSliderItem: [
-            
-                    {id: 1, img: '1.png'},
-                    {id: 2, img: '2.png'},
-                    {id: 3, img: '1.png'},
-            
-                    {id: 4, img: '2.png'},
-                    {id: 5, img: '2.png'},
-                    {id: 6, img: '1.png'},
-                         
-                    {id: 7, img: '1.png'},
-                    {id: 8, img: '1.png'},
-                    {id: 9, img: '2.png'},
+    import VVideoSliderItem from './AK-VideoSliderItem'
+    import VButton from '@/components/UI/AK-Button.vue'
 
+    export default {
+        name: 'VVideoSlider',
+        components: {
+            VVideoSliderItem, VButton
+        },
+        data() {
+            return {
+                videoSliderItem: [
+                        {   id: 1, img: '1.png'  },
+                        {   id: 2, img: '2.png'  },
+                        {   id: 3, img: '1.png'  },   
 
-                
-            ],
-            countSlide: 0,
-            
-        }
-    },
-    methods: {
-        
-        prevSlideVideo() {
-            if(this.countSlide > 0) {
-                this.countSlide -= 3
-            } else if(this.countSlide == 0) {
-                this.countSlide = this.videoSliderItem.length -3;
+                        {   id: 4, img: '2.png'  },
+                        {   id: 5, img: '2.png'  },
+                        {   id: 6, img: '1.png'  }, 
+
+                        {   id: 7, img: '1.png'  },
+                        {   id: 8, img: '1.png'  },
+                        {   id: 9, img: '2.png'  },
+                ],
+                countSlide: 0,
             }
         },
-        nextSlideVideo() {
-            if(this.countSlide >= this.videoSliderItem.length - 3) {
-                this.countSlide = 0
-            }else {
-                this.countSlide += 3
-            }
+
+        methods: {
+            prevSlideVideo() {
+                if(this.countSlide > 0) {
+
+                    this.countSlide -= 3
+
+                } else if(this.countSlide == 0) {
+
+                    this.countSlide = this.videoSliderItem.length -3;
+
+                }
+            },
+            nextSlideVideo() {
+                if(this.countSlide >= this.videoSliderItem.length - 3) {
+
+                    this.countSlide = 0
+                    
+                }else {
+                    this.countSlide += 3
+                }
+            },
         },
-    },
-}
+    }
 </script>
 
 <style>

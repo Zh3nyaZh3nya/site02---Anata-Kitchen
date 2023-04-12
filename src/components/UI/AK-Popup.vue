@@ -53,11 +53,11 @@
 
 <script>
     import VButton from '@/components/UI/AK-Button.vue';
+    
     export default {
         name: 'v-popup',
-        components: {
-            VButton
-        },
+        components: {   VButton   },
+
         data() {
             return {
                 name: '',

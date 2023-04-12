@@ -152,10 +152,9 @@
 
 <script>
     import VHeaderVue from './AK-Header.vue';
+    
     export default {
-        components: {
-            VHeaderVue
-        },
+        components: {   VHeaderVue   },
         data() {
             return {
                 showStyle: false,

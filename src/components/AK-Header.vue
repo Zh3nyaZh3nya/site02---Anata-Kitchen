@@ -189,61 +189,59 @@
 </template>
 
 <script>
-import VPopup from './UI/AK-Popup.vue';
-import akCart from './AK-Cart.vue'; 
-import { mapGetters } from 'vuex';
-export default {
-    name: 'VHeader',
-    components: {
-        VPopup, akCart
-    },
-    data() {
-        return {
-            popupItems: [
-                {
-                    id: 1,
-                    img: 'Vector.svg',
-                    title: 'Проект + Расчет',
-                    btn: 'Рассчитать'
-                },
-                {
-                    id: 2,
-                    img: 'Group.svg',
-                    title: 'Вызвать замерщика с образцами',
-                    btn: 'Вызвать'
-                }
-            ],
-            visiblePopup: false,
-            showBurger: false,
-            activeLink: false,
-            showCartMenu: false,
-        }
-    },
-    methods: {
-        showCart() {
-            if(this.showCartMenu === false) {
-                this.showCartMenu = true
-            }else {
-                this.showCartMenu = false
+    import VPopup from './UI/AK-Popup.vue';
+    import akCart from './AK-Cart.vue'; 
+    import { mapGetters } from 'vuex';
+
+    export default {
+        name: 'VHeader',
+        components: {
+            VPopup, akCart
+        },
+
+        data() {
+            return {
+                popupItems: [
+                    {
+                        id: 1,
+                        img: 'Vector.svg',
+                        title: 'Проект + Расчет',
+                        btn: 'Рассчитать'
+                    },
+                    {
+                        id: 2,
+                        img: 'Group.svg',
+                        title: 'Вызвать замерщика с образцами',
+                        btn: 'Вызвать'
+                    }
+                ],
+                visiblePopup: false,
+                showBurger: false,
+                activeLink: false,
+                showCartMenu: false,
             }
         },
-        showPopup(popupItem) {
-            popupItem.visiblePopup = true
-        },
-        closePopup(popupItem) {
-            popupItem.visiblePopup = false
-        },
-        closePopupBtn(popupItem) {
-            popupItem.visiblePopup = false
+        methods: {
+            showCart() {
+                this.showCartMenu === false ? this.showCartMenu = true : this.showCartMenu = false;
+            },
+            showPopup(popupItem) {
+                popupItem.visiblePopup = true
+            },
+            closePopup(popupItem) {
+                popupItem.visiblePopup = false
+            },
+            closePopupBtn(popupItem) {
+                popupItem.visiblePopup = false
 
+            }
+        },
+        computed: {
+            ...mapGetters([
+                'CART'
+            ])
         }
-    },
-    computed: {
-        ...mapGetters([
-            'CART'
-        ])
     }
-}
 </script>
 
 <style scoped>

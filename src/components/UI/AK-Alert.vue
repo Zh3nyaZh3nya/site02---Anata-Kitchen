@@ -20,6 +20,7 @@
 <script>
     export default {
         name: 'ak-alert',
+        
         props: {
             messages: {
                 type: Array,

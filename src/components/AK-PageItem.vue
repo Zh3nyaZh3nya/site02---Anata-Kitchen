@@ -161,12 +161,9 @@
             return {
                 name: null,
                 phone: null,
-
             }
         },
-        props: {
 
-        },
         methods: {
             checkForm(event) {
                 event.preventDefault()

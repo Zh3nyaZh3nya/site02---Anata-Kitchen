@@ -10,14 +10,21 @@
                 </div>
             </div>
             <form action="#" @submit="checkForm">
+
                 <div class="popup__form">
+
                     <div class="popup__form-input">
+
                         <p>Представьтесь</p>
+
                         <p 
                             v-show="error != false" 
-                            :style="{background: '#e99999', padding: '5px', fontSize: '20px', color: '#4a1d1d', width: '350px', borderRadius: '5px'}">
+
+                            :style="{background: '#e99999', padding: '5px', fontSize: '20px', color: '#4a1d1d', width: '350px', borderRadius: '5px'}"
+                        >
                             Введите имя
                         </p>
+
                         <input 
                             v-model="name"
                             type="text" 
@@ -25,33 +32,52 @@
                             class="input__name"
                         >
                     </div>
+
                     <div class="popup__form-textarea">
+
                         <p>Текст отзыва</p>
+
                         <p  
                             :style="{background: '#e99999', padding: '5px', fontSize: '20px', color: '#4a1d1d', width: '350px', borderRadius: '5px'}"
-                            v-show="error != false">
+
+                            v-show="error != false"
+                        >
                             Напишите комментарий
                         </p>
+
                         <textarea v-model="comment"></textarea>
+
                     </div>
+
                 </div>
                 <div class="star-rating">
-                    <p>Оценка</p>
-                    <button @click="minusStar">
-                        <i class="material-icons">remove</i>
-                    </button>
-                    <p>{{ selectedStar.value }} / {{ starMax }}</p>
-                    <!-- <img v-for="star in stars" :src="require('@/assets/UI/' + star.image)" alt=""> -->
-                    <!-- <p>{{ star }} / {{ starMax }}</p> -->
-                    <button @click="plusStar">
-                        <i class="material-icons">add</i>
-                    </button>
+
+                    <div class="star-rating-title">
+                        <p>Оценка</p>
+                    </div>
+
+                    <div class="star-rating-quantity">
+
+                        <button @click="minusStar">
+                            <i class="material-icons">remove</i>
+                        </button>
+
+                        <p>{{ selectedStar.value }} / {{ starMax }}</p>
+                        <button @click="plusStar">
+                            <i class="material-icons">add</i>
+                        </button>
+
+                    </div>
                 </div>
+
                 <v-button :style="{color: '#fff',}" @click="createNewReview" >Оставить отзыв</v-button>
+
             </form>
 
         </div>
+
     </div>
+
 </template>
 
 <script>
@@ -59,9 +85,8 @@
 
     export default {
         name: 'v-review-popup',
-        components: {
-            VButton
-        },        
+        components: {   VButton    },      
+          
         data() {
             return {
                 date: new Date(),
@@ -75,35 +100,30 @@
                 stars: [
                     {
                     value: 1,
-                    label: 'One star',
                     star: {
                             star1: 'YellowStar.svg', star2: 'YellowGray.svg', star3: 'YellowGray.svg', star4: 'YellowGray.svg', star5: 'YellowGray.svg'
                         },
                     },
                     {
                     value: 2,
-                    label: 'Two stars',
                     star: {
                             star1: 'YellowStar.svg', star2: 'YellowStar.svg', star3: 'YellowGray.svg', star4: 'YellowGray.svg', star5: 'YellowGray.svg'
                         },
                     },
                     {
                     value: 3,
-                    label: 'Three stars',
                     star: {
                             star1: 'YellowStar.svg', star2: 'YellowStar.svg', star3: 'YellowStar.svg', star4: 'YellowGray.svg', star5: 'YellowGray.svg'
                         },
                     },
                     {
                     value: 4,
-                    label: 'Four stars',
                     star: {
                             star1: 'YellowStar.svg', star2: 'YellowStar.svg', star3: 'YellowStar.svg', star4: 'YellowStar.svg', star5: 'YellowGray.svg'
                         },
                     },
                     {
                     value: 5,
-                    label: 'Five stars',
                     star: {
                             star1: 'YellowStar.svg', star2: 'YellowStar.svg', star3: 'YellowStar.svg', star4: 'YellowStar.svg', star5: 'YellowStar.svg'
                         },
@@ -118,14 +138,11 @@
             checkForm(event) {
                 if(this.name === '' || this.comment === '') {
                     this.error = true
-                } else {
-
-                }
+                } else {}
                 event.preventDefault()
             },
-            clickClosePopup() {
-                this.$emit('closePopup')
-            },
+
+            clickClosePopup() { this.$emit('closePopup') },
 
             createNewReview() {
                 const newReview = {
@@ -141,14 +158,10 @@
                 this.$emit('createNewReview', newReview)
             },
             minusStar() {
-                if(this.star > 0) {
-                    console.log(this.star--)
-                }
+                this.star > 0 ? this.star-- : this.star;
             },
             plusStar() {
-                if(this.star < this.starMax) {
-                    this.star++
-                }
+                this.star < this.starMax ? this.star++ : this.star;
             }
         },
         computed: {
@@ -235,11 +248,27 @@
 
 .star-rating {
     display: flex;
+    margin-bottom: 30px;
+
+}
+.star-rating button {
+    height: 24px;
+
 }
 .star-rating p {
     margin-top: 30px;
     font-size: 16px;
     line-height: 150%;
+}
+.star-rating-quantity {
+    display: flex;
+    margin-left: 50px;
+
+}
+.star-rating-quantity button {
+    margin-top: 30px;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 @media(max-width: 1240px) {

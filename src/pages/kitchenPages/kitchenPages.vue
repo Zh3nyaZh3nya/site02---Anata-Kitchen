@@ -1,11 +1,10 @@
 <template>
     <VHeader></VHeader>
-    <main class="kitchen__pages">
-        <VCatalogKitchen
-            
-        />
 
+    <main class="kitchen__pages">
+        <VCatalogKitchen/>
     </main>
+    
     <VFooter></VFooter>
 
 </template>
@@ -14,16 +13,11 @@
     import VHeader from '@/components/AK-Header.vue';
     import VFooter from '@/components/AK-Footer.vue';
     import VCatalogKitchen from '../../components/AK-CatalogJobKitchen.vue';
+
     export default {
         components: {
             VHeader, VFooter, VCatalogKitchen 
-        },
-        data() {
-            return {
-
-            }
-        },
-
+        }
     }
 </script>
 

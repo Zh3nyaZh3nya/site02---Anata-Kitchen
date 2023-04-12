@@ -22,11 +22,13 @@
 <script>
     import VButton from '@/components/UI/AK-Button.vue'
     import VReviewPopup from './AK-ReviewPopup.vue';
+    
     export default {
         name: 'v-my-comment',
         components: {
             VButton, VReviewPopup
         },
+        
         data() {    
             return {
                 visiblePopup: false

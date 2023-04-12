@@ -17,6 +17,7 @@
 <script>
     export default {
         name: 'v-video-item',
+        
         props: {
             videoItem_data: {
                 type: Object,

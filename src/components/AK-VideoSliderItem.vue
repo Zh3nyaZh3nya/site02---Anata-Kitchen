@@ -7,6 +7,7 @@
 <script>
 export default {
     name: 'VVideoSliderItem',
+    
     props: {
         sliderVideoItem_data: {
             type: Object,

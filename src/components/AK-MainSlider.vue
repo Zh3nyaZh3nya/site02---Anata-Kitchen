@@ -21,44 +21,48 @@
 </template>
 
 <script>
-import VMainSliderItem from './AK-MainSliderItem'
-export default {
-    name: 'VMainSlider',
-    components: {
-        VMainSliderItem
-    },
+    import VMainSliderItem from './AK-MainSliderItem'
 
-    data() {
-        return {
-            sliderTopItems: [
-                {id: 1, img: '1.png', img2: 'razrez.png', title: 'Кухни от производителя', price: '-40%', subtitle: 'На коллекции кухонь'},
-                {id: 2, img: '1.png', img2: 'razrez.png', title: 'Кухни от производителя', price: '-20%', subtitle: 'На коллекции кухонь'},
-                {id: 3, img: '1.png', img2: 'razrez.png', title: 'Кухни от производителя', price: '-60%', subtitle: 'На коллекции кухонь'},
-                {id: 4, img: '1.png', img2: 'razrez.png', title: 'Кухни от производителя', price: '-60%', subtitle: 'На коллекции кухонь'},
-                {id: 5, img: '1.png', img2: 'razrez.png', title: 'Кухни от производителя', price: '-60%', subtitle: 'На коллекции кухонь'}
+    export default {
+        name: 'VMainSlider',
+        components: {   VMainSliderItem   },
 
-            ],
-            currentSlideIndex: 0
-        }
-    },
-    methods: {
-        prevSlide() {
-            if(this.currentSlideIndex > 0) {
-                this.currentSlideIndex--
-            } else if (this.currentSlideIndex == 0) {
-                this.currentSlideIndex = this.sliderTopItems.length - 1
+        data() {
+            return {
+                sliderTopItems: [
+                    {id: 1, img: '1.png', img2: 'razrez.png', title: 'Кухни от производителя', price: '-40%', subtitle: 'На коллекции кухонь'},
+                    {id: 2, img: '1.png', img2: 'razrez.png', title: 'Кухни от производителя', price: '-20%', subtitle: 'На коллекции кухонь'},
+                    {id: 3, img: '1.png', img2: 'razrez.png', title: 'Кухни от производителя', price: '-60%', subtitle: 'На коллекции кухонь'},
+                    {id: 4, img: '1.png', img2: 'razrez.png', title: 'Кухни от производителя', price: '-60%', subtitle: 'На коллекции кухонь'},
+                    {id: 5, img: '1.png', img2: 'razrez.png', title: 'Кухни от производителя', price: '-60%', subtitle: 'На коллекции кухонь'}
+                ],
+                currentSlideIndex: 0
             }
         },
-        nextSlide() {
-            if(this.currentSlideIndex >= this.sliderTopItems.length - 1) {
-                this.currentSlideIndex = 0
-            } else {
-                this.currentSlideIndex++
-            }
-        }
-    },
+        methods: {
+            prevSlide() {
+                if(this.currentSlideIndex > 0) {
 
-}
+                    this.currentSlideIndex--
+
+                } else if (this.currentSlideIndex === 0) {
+
+                    this.currentSlideIndex = this.sliderTopItems.length - 1
+
+                }
+            },
+            nextSlide() {
+                if(this.currentSlideIndex >= this.sliderTopItems.length - 1) {
+                    
+                    this.currentSlideIndex = 0
+                    
+                } else {
+                    this.currentSlideIndex++
+                }
+            }
+        },
+
+    }
 </script>
 
 <style>

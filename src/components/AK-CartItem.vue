@@ -31,13 +31,12 @@
 </template>
 
 <script>
-import cart from '@/store/modules/cart';
-import VButton from './UI/AK-Button.vue';
+    import VButton from './UI/AK-Button.vue';
+    
     export default {
         name: 'ak-cart-item',
-        components: {
-            VButton
-        },
+        components: {   VButton    },
+        
         props: {
             cartItem_data: {
                 type: Object,

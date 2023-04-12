@@ -34,22 +34,16 @@
 </template>
 
 <script>
-export default {
-    name: 'VMainSliderItem',
-    props: {
-        sliderItem_data: {
-            type: Object,
-            default: () => {}
-        },
+    export default {
+        name: 'VMainSliderItem',
 
-    },
-    data(){
-        return {
-            
+        props: {
+            sliderItem_data: {
+                type: Object,
+                default: () => {}
+            },
         }
-    },
-
-}
+    }
 </script>
 
 <style>

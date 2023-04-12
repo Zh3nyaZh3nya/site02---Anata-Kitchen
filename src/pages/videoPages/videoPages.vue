@@ -10,14 +10,18 @@
                 :videoItem_data="videoItem"
             />
         </div>
+
     </div>
+
     <VFooter />
+
 </template>
 
 <script>
     import VHeader from '@/components/AK-Header.vue';
     import VFooter from '@/components/AK-Footer.vue';
     import VideoItem from '@/pages/videoPages/AK-VideoItem.vue';
+
     export default {
         components: {
             VHeader, VFooter, VideoItem
@@ -58,7 +62,6 @@
                 ]
             }
         }
-        
     }
 </script>
 

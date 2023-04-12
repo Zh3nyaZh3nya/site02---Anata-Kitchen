@@ -18,12 +18,12 @@
 </template>
 
 <script>
-import akCartItem from './AK-CartItem'
-import { mapActions } from 'vuex';
+    import akCartItem from './AK-CartItem'
+    import { mapActions } from 'vuex';
+    
     export default {
-        components: {
-            akCartItem
-        },
+        components: {  akCartItem  },
+        
         props: {
             cart_data: {
                 type: Array,
