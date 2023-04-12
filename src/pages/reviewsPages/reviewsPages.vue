@@ -11,7 +11,9 @@
                 />
             </div>
             <div class="myComment">
-                <VMyComment />
+                <VMyComment 
+                    @createNewReview="createNewReview"
+                />
             </div>  
 
         </div>
@@ -41,7 +43,7 @@
                         reviewsImg: {
                             img1: 'image 3.png', img2: 'image 4.png', img3: 'image 5.png'
                         },
-                        dateNumber: '21 ', dateMonth: 'сентябрь'
+                        dateNumber: '21', dateMonth: 'сентябрь'
                     },
                     {
                         id: 2,
@@ -53,7 +55,7 @@
                         reviewsImg: {
                             img1: 'image 1.png', img2: 'image 1.png'
                         },
-                        dateNumber: '17 ', dateMonth: 'сентябрь'
+                        dateNumber: '17', dateMonth: 'сентябрь'
                     },                    
                     {
                         id: 3,
@@ -65,7 +67,7 @@
                         reviewsImg: {
                             img1: 'image 6.png', img2: 'image 7.png', img3: 'image 8.png'
                         },
-                        dateNumber: '16 ', dateMonth: 'сентябрь'
+                        dateNumber: '16', dateMonth: 'сентябрь'
                     },
                     {
                         id: 4,
@@ -77,7 +79,7 @@
                         reviewsImg: {
                             img1: 'image 3.png', img2: 'image 4.png', img3: 'image 5.png'
                         },
-                        dateNumber: '21 ', dateMonth: 'сентябрь'
+                        dateNumber: '21', dateMonth: 'сентябрь'
                     },
                     {
                         id: 5,
@@ -89,7 +91,7 @@
                         reviewsImg: {
                             img1: 'image 1.png', img2: 'image 1.png'
                         },
-                        dateNumber: '17 ', dateMonth: 'сентябрь'
+                        dateNumber: '17', dateMonth: 'сентябрь'
                     },       
                     {
                         id: 6,
@@ -101,10 +103,14 @@
                         reviewsImg: {
                             img1: 'image 6.png', img2: 'image 7.png', img3: 'image 8.png'
                         },
-                        dateNumber: '16 ', dateMonth: 'сентябрь'
+                        dateNumber: '16', dateMonth: 'сентябрь'
                     },
                 ],
-
+            }
+        },
+        methods: {
+            createNewReview(data) {
+                this.reviewsItem.push(data)
             }
         }
     }

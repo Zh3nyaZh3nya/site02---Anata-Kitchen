@@ -4,7 +4,7 @@ import kitchenItem from './modules/kitchenItem'
 
 export default new createStore({
     modules: {
-        cart, // корзина
-        kitchenItem
+        cart, 
+        kitchenItem,
     }
 })

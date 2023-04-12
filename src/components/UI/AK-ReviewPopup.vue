@@ -37,9 +37,17 @@
                 </div>
                 <div class="star-rating">
                     <p>Оценка</p>
-                    <vue3-star-ratings :showControl="false" :style="{margin: 0}"/>
+                    <button @click="minusStar">
+                        <i class="material-icons">remove</i>
+                    </button>
+                    <p>{{ selectedStar.value }} / {{ starMax }}</p>
+                    <!-- <img v-for="star in stars" :src="require('@/assets/UI/' + star.image)" alt=""> -->
+                    <!-- <p>{{ star }} / {{ starMax }}</p> -->
+                    <button @click="plusStar">
+                        <i class="material-icons">add</i>
+                    </button>
                 </div>
-                <v-button :style="{color: '#fff',}">Оставить отзыв</v-button>
+                <v-button :style="{color: '#fff',}" @click="createNewReview" >Оставить отзыв</v-button>
             </form>
 
         </div>
@@ -48,16 +56,62 @@
 
 <script>
     import VButton from '@/components/UI/AK-Button.vue';
+
     export default {
         name: 'v-review-popup',
         components: {
             VButton
-        },
+        },        
         data() {
             return {
+                date: new Date(),
                 name: '',
                 comment: '',
-                error: false
+                star: '',
+                error: false,
+                reviewData: {},
+                star: 1,
+                starMax: 5,
+                stars: [
+                    {
+                    value: 1,
+                    label: 'One star',
+                    star: {
+                            star1: 'YellowStar.svg', star2: 'YellowGray.svg', star3: 'YellowGray.svg', star4: 'YellowGray.svg', star5: 'YellowGray.svg'
+                        },
+                    },
+                    {
+                    value: 2,
+                    label: 'Two stars',
+                    star: {
+                            star1: 'YellowStar.svg', star2: 'YellowStar.svg', star3: 'YellowGray.svg', star4: 'YellowGray.svg', star5: 'YellowGray.svg'
+                        },
+                    },
+                    {
+                    value: 3,
+                    label: 'Three stars',
+                    star: {
+                            star1: 'YellowStar.svg', star2: 'YellowStar.svg', star3: 'YellowStar.svg', star4: 'YellowGray.svg', star5: 'YellowGray.svg'
+                        },
+                    },
+                    {
+                    value: 4,
+                    label: 'Four stars',
+                    star: {
+                            star1: 'YellowStar.svg', star2: 'YellowStar.svg', star3: 'YellowStar.svg', star4: 'YellowStar.svg', star5: 'YellowGray.svg'
+                        },
+                    },
+                    {
+                    value: 5,
+                    label: 'Five stars',
+                    star: {
+                            star1: 'YellowStar.svg', star2: 'YellowStar.svg', star3: 'YellowStar.svg', star4: 'YellowStar.svg', star5: 'YellowStar.svg'
+                        },
+                    }
+                ],
+                months: [
+                    "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
+                ]
             }
         },
         methods: {
@@ -65,17 +119,48 @@
                 if(this.name === '' || this.comment === '') {
                     this.error = true
                 } else {
-                    this.name = '',
-                    this.comment = ''
-                    this.$emit('closePopupBtn')
 
                 }
                 event.preventDefault()
             },
             clickClosePopup() {
                 this.$emit('closePopup')
-            }
+            },
 
+            createNewReview() {
+                const newReview = {
+                    name: this.name,
+                    message: this.comment,
+                    star: this.selectedStar.star,
+                    dateNumber: this.currentDay,
+                    dateMonth: this.currentMonth
+                }
+                
+                this.$emit('closePopupBtn')
+                
+                this.$emit('createNewReview', newReview)
+            },
+            minusStar() {
+                if(this.star > 0) {
+                    console.log(this.star--)
+                }
+            },
+            plusStar() {
+                if(this.star < this.starMax) {
+                    this.star++
+                }
+            }
+        },
+        computed: {
+            selectedStar() {
+                return this.stars.find((star) => star.value === this.star)
+            },
+            currentDay() {
+                return this.date.getDate()
+            },
+            currentMonth() {
+                return this.months[this.date.getMonth()]
+            }
         },
         mounted() {
             let vm = this;
@@ -84,9 +169,7 @@
                     vm.clickClosePopup()
                 }
             })
-        }
-
-
+        },
     }
 </script>
 

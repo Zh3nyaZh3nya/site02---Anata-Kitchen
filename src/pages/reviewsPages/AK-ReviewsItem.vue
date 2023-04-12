@@ -64,5 +64,8 @@
     color: #878B90;
     font-size: 14px;
 }
+.reviewItem-date span {
+    margin-right: 5px;
+}
 
 </style>

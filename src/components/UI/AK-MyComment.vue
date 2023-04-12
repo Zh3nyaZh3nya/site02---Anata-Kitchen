@@ -1,7 +1,7 @@
 <template>
     <div class="myComment">
 
-        <VReviewPopup v-if="visiblePopup" @closePopup="closePopup" @closePopupBtn="closePopup"></VReviewPopup>
+        <VReviewPopup v-if="visiblePopup" @closePopup="closePopup" @closePopupBtn="closePopup" @createNewReview="createNewReview"></VReviewPopup>
 
         <div class="myComment-title">
             <div class="myComment-star">
@@ -38,7 +38,11 @@
             },
             closePopup() {
                 this.visiblePopup = false
+            },
+            createNewReview(data) {
+                this.$emit('createNewReview', data)
             }
+
         }
     }
 </script>
